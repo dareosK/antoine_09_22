@@ -1,12 +1,17 @@
-.navbar-lewagon {
+.navbar_main_styles {
+  z-index: 1000;
+  background-color: white;
+  justify-content: center !important;
+}
+
+.nav_links {
+  list-style: none;
+  width: 100%;
   justify-content: space-between;
-  background: white;
-}
+  padding-left: 0;
 
-.navbar-lewagon .navbar-collapse {
-  flex-grow: 0;
-}
-
-.navbar-lewagon .navbar-brand img {
-  width: 40px;
+  a {
+    text-decoration: none;
+    color: black;
+  }
 }

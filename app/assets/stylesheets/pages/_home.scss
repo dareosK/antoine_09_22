@@ -1,1 +1,13 @@
-// Specific CSS for your home-page
+.fullscreen {
+  // pins it to the top left
+  position: fixed;
+  top: 0;
+  left: 0;
+  // makes fullscreen
+  width: 100%;
+  height: 100vh;
+}
+
+.fullscreen-img {
+  background-size: cover;
+}

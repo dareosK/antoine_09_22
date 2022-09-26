@@ -1,8 +1,13 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Antoine0922</title>
+    <title>Antoine Champenois - Curator, Art Critic</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <%# Fonts %>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Mono:wght@100;400;800&display=swap" rel="stylesheet">
+    <%# Meta Tags %>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -10,8 +15,8 @@
     <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
   </head>
 
-  <body><%= render "shared/navbar" %>
-<%= render "shared/flashes" %>
+  <body>
+    <%= render "shared/navbar" %>
 
     <%= yield %>
   </body>
