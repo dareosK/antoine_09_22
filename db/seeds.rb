@@ -18,7 +18,7 @@ one = User.create!(
 
 puts "======📝 Creating Articles"
 10.times do
-  article = Article.create(
+  article = Writing.create(
     title: Faker::Quote.yoda,
     # rich_body: (Faker::Lorem.paragraphs(number: 360)).join,
     tagline: Faker::Quotes::Shakespeare.as_you_like_it_quote,
