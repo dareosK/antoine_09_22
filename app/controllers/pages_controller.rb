@@ -1,12 +1,12 @@
 class PagesController < ApplicationController
-  skip_before_action :authenticate_user!
+  skip_before_action :authenticate_user!, except: [:dashboard]
 
   def home
   end
 
   def dashboard
     @user = current_user
-    @projects = Writings.all.order(date: :desc)
+    @writings = Writing.all.order(date: :desc)
     @writing = Writing.new
   end
 end
