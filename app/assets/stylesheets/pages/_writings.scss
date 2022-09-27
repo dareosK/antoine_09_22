@@ -25,9 +25,10 @@
   }
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 800px) {
 .masonry {
     /* Masonry container */
+    width: 90%;
     column-count: 1;
   }
 }

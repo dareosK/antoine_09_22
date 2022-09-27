@@ -20,10 +20,9 @@ puts "======📝 Creating Articles"
 10.times do
   writing = Writing.create(
     title: Faker::Book.title,
-    # rich_body: (Faker::Lorem.paragraphs(number: 360)).join,
+    rich_body: (Faker::Lorem.paragraphs(number: 360)).join,
     tagline: Faker::Quotes::Shakespeare.as_you_like_it_quote,
     date: Faker::Date.between(from: '2020-09-23', to: '2021-04-25'),
-    # author: Faker::Name.name_with_middle,
     user: one
     )
   writing_img = URI.open('https://source.unsplash.com/random')

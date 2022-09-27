@@ -5,6 +5,10 @@ class WritingsController < ApplicationController
     @writings = Writing.all.order(date: :desc)
   end
 
+  def show
+    @writing = Writing.find(params[:id])
+  end
+
   def create
     @writing = Writing.new(writing_params)
     @writing.user = current_user
@@ -13,6 +17,13 @@ class WritingsController < ApplicationController
     else
       render :new
     end
+  end
+
+  def destroy
+    @writing = Writing.find(params[:id])
+    @writing.destroy
+
+    redirect_to dashboard_path
   end
 
   private

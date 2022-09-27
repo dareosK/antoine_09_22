@@ -1,0 +1,31 @@
+<div class="container-main margin-from-navbar">
+
+  <div class="article-top">
+    <div class="article-header">
+
+      <div class="header-info">
+        <p class="header-date"><%= @writing.date.strftime("%d of %B %Y") %></p>
+      </div>
+
+      <div class="header-title">
+        <h1><%= @writing.title %></h1>
+        <p style="color: grey;"><%= @writing.tagline %></p>
+      </div>
+
+    </div>
+
+    <% if @writing.cover.attached? %>
+      <%= cl_image_tag @writing.cover.key %>
+    <% else %>
+      <img src="https://source.unsplash.com/random" alt="">
+    <% end %>
+
+  </div>
+
+  <div class="container-60">
+    <p style="color: grey !important;"><%= @writing.rich_body %></p>
+  </div>
+  <div class="article-border-bottom"></div>
+
+
+</div>

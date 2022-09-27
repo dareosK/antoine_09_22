@@ -8,8 +8,27 @@
 }
 
 .footer_quote {
+  // STYLING
   padding: 1rem;
   font-family: 'Noto Sans Mono', monospace;
   font-weight: 400 !important;
   margin-bottom: 0;
+
+  width: 100%;
+}
+
+#footer_animation {
+  /* Animation start out of the screen */
+  // transform: translateX(100%);
+
+  /* Add the animation */
+  /* infinite make reapeat the animation indefinitely */
+  animation: move 100s linear infinite;
+}
+
+/* Create the animation */
+@keyframes move {
+  to {
+    transform: translateX(-100%);
+  }
 }
