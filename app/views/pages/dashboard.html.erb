@@ -19,7 +19,16 @@
                 <div class="card-product">
                   <%= cl_image_tag(writing.cover.key) %>
                   <div class="card-product-infos">
-                    <h2><%= writing.title %></h2>
+                    <div class="d-flex w-100 justify-content-between">
+                      <h2><%= writing.title %></h2>
+                      <div class="d-flex dasboard_card_icons">
+                        <%= link_to  "🖋", edit_writing_path(writing),
+                            data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
+                            <span>&nbsp;&nbsp;</span>
+                        <%= link_to  "🗑", writing_path(writing),
+                            data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
+                      </div>
+                    </div>
                     <p style="color: grey !important;"><%= writing.tagline%></p>
                     <p style="color: grey !important;"><%= writing.date.strftime("%d of %B %Y")%></p>
                   </div>

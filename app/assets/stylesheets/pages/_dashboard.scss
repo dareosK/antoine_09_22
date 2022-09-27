@@ -56,3 +56,18 @@
   margin-left: 0 !important;
   margin-right: 0 !important;
 }
+
+.dlt-btn {
+  width: 100%;
+  text-align: end;
+}
+
+.container-60 {
+  width: 60%;
+}
+
+@media screen and (max-width: 1200px) {
+  .container-60 {
+      width: 100%;
+    }
+}

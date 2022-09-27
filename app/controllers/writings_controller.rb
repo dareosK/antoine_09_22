@@ -19,6 +19,13 @@ class WritingsController < ApplicationController
     end
   end
 
+  def destroy
+    @writing = Writing.find(params[:id])
+    @writing.destroy
+
+    redirect_to dashboard_path
+  end
+
   private
 
   def writing_params
