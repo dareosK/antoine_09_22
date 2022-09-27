@@ -5,7 +5,7 @@
         <div class="item">
           <img src="https://source.unsplash.com/random" alt="">
           <h2><%= writing.title  %></h2>
-          <p><%= writing.tagline  %></p>
+          <p><%= writing.tagline.truncate(100, ommission: "... (read more)")  %></p>
         </div>
       <% end %>
     <% end %>
