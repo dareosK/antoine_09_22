@@ -18,7 +18,7 @@ one = User.create!(
 
 puts "======📝 Creating Articles"
 10.times do
-  article = Writing.create(
+  writing = Writing.create(
     title: Faker::Book.title,
     # rich_body: (Faker::Lorem.paragraphs(number: 360)).join,
     tagline: Faker::Quotes::Shakespeare.as_you_like_it_quote,
@@ -26,7 +26,7 @@ puts "======📝 Creating Articles"
     # author: Faker::Name.name_with_middle,
     user: one
     )
-  # article_img = URI.open('https://source.unsplash.com/random')
-  # article.photo.attach(io: article_img, filename: 'random.png', content_type: 'image/png')
+  writing_img = URI.open('https://source.unsplash.com/random')
+  writing.cover.attach(io: writing_img, filename: 'random.png', content_type: 'image/png')
 end
 puts "======5 Articles created"

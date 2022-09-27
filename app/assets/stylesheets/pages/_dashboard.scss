@@ -1,0 +1,57 @@
+.dashboard-flex {
+  display: flex;
+}
+
+.nav-tabs {
+  margin-bottom: 1rem !important;
+}
+
+.nav-link {
+  background-color: transparent !important;
+  // color: black !important;
+}
+
+.nav-tabs .nav-link.active {
+  background-color: rgba(245, 245, 245, 0.5) !important;
+  border-color: rgba(240, 240, 240, 0.5) rgba(240, 240, 240, 0.5) rgba(240, 240, 240, 0.5);
+}
+
+.articles-exhibitions {
+  padding-right: 16px;
+}
+
+.new-articles-exhibitions {
+  width: 40%;
+  // padding-left: 32px;
+  // padding-right: 16px;
+}
+
+.dashboard-color {
+  color: grey !important;
+}
+
+.dashboard-button {
+  background-color: black;
+  border-radius: 10px;
+
+  >input {
+    background-color: transparent;
+    border: none;
+    color: white;
+
+  }
+
+  &:hover {
+    background-color: gray;
+  }
+}
+
+.trix-content {
+  margin-bottom: 16px;
+}
+
+.ml-1,
+.mx-1 {
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+}

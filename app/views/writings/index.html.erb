@@ -3,7 +3,7 @@
     <% @writings.each do |writing| %>
       <%= link_to  writing_path(writing) do %>
         <div class="item">
-          <img src="https://source.unsplash.com/random" alt="">
+          <%= cl_image_tag(writing.cover.key) %>
           <h2><%= writing.title  %></h2>
           <p><%= writing.tagline.truncate(100, ommission: "... (read more)")  %></p>
         </div>
@@ -24,9 +24,5 @@
     display: inline-block;
     margin: 0 0 1rem;
     width: 100%;
-  }
-  img {
-    max-width: 100%;
-    object-fit: cover;
   }
 </style>
