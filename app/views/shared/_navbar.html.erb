@@ -5,6 +5,9 @@
       <li><%= link_to  "WRITINGS", writings_path %></li>
       <li><%= link_to  "ABOUT", about_path %></li>
       <li><%= link_to  "CONTACT", contact_path %></li>
+      <% if current_user && current_user.admin? %>
+        <li><%= link_to  "DASHBOARD", dashboard_path %></li>
+      <% end %>
     </ul>
   </div>
 </nav>
