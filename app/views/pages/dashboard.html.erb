@@ -1,7 +1,7 @@
 <div class="container margin-from-navbar dashboard-color">
-  <br>
-  <h2>🙌 Welcome, <strong>pumpkin 👠!</strong></h1>
-  <br>
+<br>
+<br>
+<br>
   <div class="">
     <%# nav start %>
       <nav class="nav nav-tabs">
@@ -17,7 +17,7 @@
             <% @writings.each do |writing| %>
               <%= link_to writing_path(writing) do %>
                 <div class="card-product">
-                  <%= cl_image_tag(writing.cover.key, class: "img-filter") %>
+                  <%= cl_image_tag(writing.cover.key) %>
                   <div class="card-product-infos">
                     <h2><%= writing.title %></h2>
                     <p style="color: grey !important;"><%= writing.tagline%></p>

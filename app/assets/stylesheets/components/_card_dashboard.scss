@@ -10,18 +10,6 @@
   // margin-bottom: 1rem;
 }
 
-.img-filter {
-  filter: grayscale(70%) sepia(6%) saturate(62%) contrast(101%);
-  -webkit-filter: grayscale(70%) sepia(6%) saturate(62%) contrast(101%);
-  -moz-filter: grayscale(70%) sepia(6%) saturate(62%) contrast(101%);
-
-  // &:hover {
-  //   filter: grayscale(0%) sepia(0%) saturate(100%) contrast(101%);
-  //   -webkit-filter: grayscale(0%) sepia(0%) saturate(100%) contrast(101%);
-  //   -moz-filter: grayscale(0%) sepia(0%) saturate(100%) contrast(101%);
-  // }
-}
-
 .ol-kill-padding {
   padding-left: 0 !important;
 }
