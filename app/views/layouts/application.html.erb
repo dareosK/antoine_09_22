@@ -20,7 +20,7 @@
     <%= render "shared/navbar" %>
 
     <%= yield %>
-    <% unless action_name == "dashboard" %>
+    <% unless action_name == "dashboard" || "edit" %>
       <%= render  "shared/footer" %>
     <% end %>
   </body>
