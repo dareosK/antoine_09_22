@@ -1,0 +1,9 @@
+<div class="d-flex justify-content-center align-items-center">
+  <div class="statement container d-flex flex-column">
+    <%= @bio %>
+    <a id="cv-downloader" target="_blank" href="<%= cl_image_path @cv %>">Download my cv</a>
+    <br>
+    <%= cl_image_tag(@avatar) %>
+  </div>
+  <%= render  "shared/footer" %>
+</div>

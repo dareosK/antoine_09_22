@@ -7,6 +7,7 @@
       <nav class="nav nav-tabs">
         <a class="nav-link active link-font" aria-current="page" href="#writings" data-bs-toggle="tab">📑</a>
         <a class="nav-link link-font" href="#newwriting" data-bs-toggle="tab">✍🏻</a>
+        <a class="nav-link link-font" href="#profile" data-bs-toggle="tab">👱🏻‍♂️</a>
       </nav>
     <%# nav end %>
 
@@ -49,6 +50,59 @@
             <%= f.input :cover, as: :file, label: :photo %>
             <div class="btn w-100 dashboard-button">
               <%= f.submit %>
+            </div>
+            <br>
+            <br>
+            <br>
+          <% end %>
+        </div>
+
+        <div class="tab-pane fade show" id="profile" role="tabpanel">
+
+          <%= simple_form_for(@user, url: registration_path(@user), html: { method: :put }) do |f| %>
+            <%= f.error_notification %>
+
+            <div class="form-inputs">
+              <%= f.input :avatar, as: :file, label: :avatar %>
+              <%#= f.input :moodboard,
+                          as: :file,
+                          input_html: { multiple: true },
+                          label: :moodboard %>
+              <%= f.input :cv, as: :file, label: :cv %>
+              <a id="cv-downloader" target="_blank" href="<%= cl_image_path @cv %>">Download my cv</a>
+              <br>
+              <br>
+              <%= f.input :bio,
+                          # label: false,
+                          placeholder: "Bio",
+                          required: false %>
+              <%= f.input :contact_mail,
+                          # label: false,
+                          placeholder: "Contact mail",
+                          hint: "This is the mail you want to show on the contact page",
+                          required: false %>
+              <%= f.input :quotes,
+                          # label: false,
+                          placeholder: "Quotes",
+                          hint: "Say something fun for your footer!",
+                          required: false %>
+              <%= f.input :email, required: true, autofocus: true %>
+
+              <%= f.input :password,
+                          hint: "leave it blank if you don't want to change it",
+                          required: false,
+                          input_html: { autocomplete: "new-password" } %>
+              <%= f.input :password_confirmation,
+                          required: false,
+                          input_html: { autocomplete: "new-password" } %>
+              <%= f.input :current_password,
+                          hint: "we need your current password to confirm your changes",
+                          required: true,
+                          input_html: { autocomplete: "current-password" } %>
+            </div>
+
+            <div class="form-actions">
+              <%= f.button :submit, "Update", class: "w-100 dashboard-button", id: "text-white" %>
             </div>
             <br>
             <br>
