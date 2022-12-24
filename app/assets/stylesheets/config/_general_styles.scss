@@ -6,6 +6,8 @@ h1 {
 h2 {
   font-family: 'Noto Sans Mono', monospace;
   font-weight: 600 !important;
+  margin: 0 !important;
+  // line-height: 1 !important;
 }
 
 ul, p {
@@ -22,4 +24,8 @@ img {
   /* max-height: 450px; */
   width: 100%;
   object-fit: cover;
+}
+
+.margin-from-quotes {
+  margin-bottom: 100px !important;
 }

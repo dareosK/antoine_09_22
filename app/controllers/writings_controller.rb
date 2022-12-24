@@ -3,12 +3,12 @@ class WritingsController < ApplicationController
 
   def index
     @writings = Writing.all.order(date: :desc)
-    @quotes = User.first.quotes
+    @quotes = User.find_by(admin: true).quotes
   end
 
   def show
     @writing = Writing.find(params[:id])
-    @quotes = User.first.quotes
+    @quotes = User.find_by(admin: true).quotes
   end
 
   def create
@@ -18,6 +18,20 @@ class WritingsController < ApplicationController
       redirect_to writing_path(@writing)
     else
       render :new
+    end
+  end
+
+  def edit
+    @writing = Writing.find(params[:id])
+  end
+
+  def update
+    @writing = Writing.find(params[:id])
+    @writing.update(writing_params)
+    if @writing.save!
+      redirect_to writing_path(@writing)
+    else
+      render :new, status: :unprocessable_entity
     end
   end
 
