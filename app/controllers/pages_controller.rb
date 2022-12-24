@@ -3,6 +3,8 @@ class PagesController < ApplicationController
 
   def home
     @quotes = User.first.quotes
+    # retrieve the random key from one of the moodboard pictures to showcase on the front page
+    @image = User.first.moodboard_attachments.sample.key
   end
 
   def dashboard
