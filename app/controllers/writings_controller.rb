@@ -3,10 +3,12 @@ class WritingsController < ApplicationController
 
   def index
     @writings = Writing.all.order(date: :desc)
+    @quotes = User.first.quotes
   end
 
   def show
     @writing = Writing.find(params[:id])
+    @quotes = User.first.quotes
   end
 
   def create

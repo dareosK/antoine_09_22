@@ -2,6 +2,14 @@
   display: flex;
 }
 
+#text-white {
+  color: white !important;
+
+  &:hover {
+    color: black !important;
+  }
+}
+
 .nav-tabs {
   margin-bottom: 1rem !important;
 }
@@ -44,6 +52,7 @@
 
   &:hover {
     background-color: gray;
+    color: black;
   }
 }
 

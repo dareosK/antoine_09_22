@@ -64,21 +64,25 @@
 
             <div class="form-inputs">
               <%= f.input :avatar, as: :file, label: :avatar %>
-              <%= f.input :moodboard,
+              <%#= f.input :moodboard,
                           as: :file,
                           input_html: { multiple: true },
                           label: :moodboard %>
+              <%= f.input :cv, as: :file, label: :cv %>
+              <a id="cv-downloader" target="_blank" href="<%= cl_image_path @cv %>">Download my cv</a>
+              <br>
+              <br>
               <%= f.input :bio,
-                          label: false,
+                          # label: false,
                           placeholder: "Bio",
                           required: false %>
               <%= f.input :contact_mail,
-                          label: false,
+                          # label: false,
                           placeholder: "Contact mail",
                           hint: "This is the mail you want to show on the contact page",
                           required: false %>
               <%= f.input :quotes,
-                          label: false,
+                          # label: false,
                           placeholder: "Quotes",
                           hint: "Say something fun for your footer!",
                           required: false %>
@@ -98,7 +102,7 @@
             </div>
 
             <div class="form-actions">
-              <%= f.button :submit, "Update" %>
+              <%= f.button :submit, "Update", class: "w-100 dashboard-button", id: "text-white" %>
             </div>
             <br>
             <br>
