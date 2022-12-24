@@ -10,8 +10,12 @@
 
 .work-date, .work-text {
   line-height: 1;
-  padding-top: 4px;
+  // padding-top: 4px;
   font-size: 0.75rem;
+}
+
+.work-date {
+  color: darkgray;
 }
 
 .item h2 {

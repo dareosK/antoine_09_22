@@ -1,12 +1,12 @@
 <div class="writings-wrapper">
-  <div class="masonry">
+  <div class="masonry margin-from-quotes">
     <% @writings.each do |writing| %>
       <%= link_to  writing_path(writing) do %>
         <div class="item">
           <%= cl_image_tag(writing.cover.key) %>
+          <h2><%= writing.title %></h2>
           <span class="work-date"><%= writing.date.strftime("%d of %B, %Y") + " | " %></span>
           <span class="work-text">text</span>
-          <h2><%= writing.title %></h2>
           <p><%= writing.tagline.truncate(100, ommission: "... (read more)")  %></p>
         </div>
       <% end %>
