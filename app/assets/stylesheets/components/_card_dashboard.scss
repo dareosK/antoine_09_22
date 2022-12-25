@@ -3,7 +3,8 @@
   min-height: 200px;
   background: white;
   display: flex;
-  border-top: 1px solid #dee2e6;
+  border-bottom: 1px solid #dee2e6;
+  border-bottom: 1px solid #dee2e6;
 }
 
 .dasboard_card_icons > a:first-child {
@@ -18,7 +19,7 @@
   height: 200px;
   width: 200px;
   object-fit: cover;
-  padding: 1rem 0 1rem 1rem;
+  padding: 1rem 0 1rem;
 }
 
 .card-product h2 {

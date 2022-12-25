@@ -7,6 +7,8 @@
       <nav class="nav nav-tabs">
         <a class="nav-link active link-font" aria-current="page" href="#writings" data-bs-toggle="tab">📑</a>
         <a class="nav-link link-font" href="#newwriting" data-bs-toggle="tab">✍🏻</a>
+        <a class="nav-link link-font" aria-current="page" href="#projects" data-bs-toggle="tab">🖼</a>
+        <a class="nav-link link-font" href="#newproject" data-bs-toggle="tab">✍🏻</a>
         <a class="nav-link link-font" href="#profile" data-bs-toggle="tab">👱🏻‍♂️</a>
       </nav>
     <%# nav end %>
@@ -15,51 +17,79 @@
       <div class="tab-content" id="myTabContent">
         <div class="tab-pane fade show active" id="writings" role="tabpanel">
           <ol class="ol-kill-padding">
-            <% @writings.each do |writing| %>
-              <%= link_to writing_path(writing) do %>
-                <div class="card-product">
-                  <%= cl_image_tag(writing.cover.key) %>
-                  <div class="card-product-infos">
-                    <div class="d-flex w-100 justify-content-between">
-                      <h2><%= writing.title %></h2>
-                      <div class="d-flex dasboard_card_icons">
-                        <%= link_to  "🖋", edit_writing_path(writing) %>
-                            <span>&nbsp;&nbsp;</span>
-                        <%= link_to  "🗑", writing_path(writing),
-                            data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
+            <h2 class="mb-3">Your Texts</h2>
+            <% if @writings %>
+              <% @writings.each do |writing| %>
+                <%= link_to writing_path(writing) do %>
+                  <div class="card-product">
+                    <%= cl_image_tag(writing.cover.key) %>
+                    <div class="card-product-infos">
+                      <div class="d-flex w-100 justify-content-between">
+                        <h2><%= writing.title %></h2>
+                        <div class="d-flex dasboard_card_icons">
+                          <%= link_to  "🖋", edit_writing_path(writing) %>
+                              <span>&nbsp;&nbsp;</span>
+                          <%= link_to  "🗑", writing_path(writing),
+                              data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
+                        </div>
                       </div>
+                      <span class="work-date"><%= writing.date.strftime("%d of %B, %Y") + " | " %></span>
+                      <span class="work-text">text</span>
+                      <p style="color: black !important;"><%= writing.tagline%></p>
                     </div>
-                    <span class="work-date"><%= writing.date.strftime("%d of %B, %Y") + " | " %></span>
-                    <span class="work-text">text</span>
-                    <p style="color: black !important;"><%= writing.tagline%></p>
                   </div>
-                </div>
-              <% end  %>
+                <% end  %>
+              <% end %>
+            <% else %>
+              <p> You have not texts yet!</p>
             <% end %>
+
           </ol>
         </div>
 
         <div class="tab-pane fade show" id="newwriting" role="tabpanel">
-          <%= simple_form_for(@writing) do |f| %>
-            <%= f.input :title, label: false, placeholder: "Title" %>
-            <%#= f.input :author, label: false, placeholder: "Author" %>
-            <%#= f.input :body %>
-            <%= f.input :tagline, label: false, placeholder: "Tagline" %>
-            <%= f.rich_text_area :rich_body %>
-            <%= f.input :date, html5: true, input_html: { data: { controller: "flatpickr" } }   %>
+          <h2 class="mb-4">New Text</h2>
+          <%= render  "writings/new" %>
+        </div>
 
-            <%= f.input :cover, as: :file, label: :photo %>
-            <div class="btn w-100 dashboard-button">
-              <%= f.submit %>
-            </div>
-            <br>
-            <br>
-            <br>
-          <% end %>
+        <div class="tab-pane fade show" id="projects" role="tabpanel">
+          <ol class="ol-kill-padding">
+            <h2 class="mb-3">Your Projects</h2>
+            <% if @projects %>
+              <% @projects.each do |project| %>
+                <%= link_to project_path(project) do %>
+                  <div class="card-product">
+                    <%#= cl_image_tag(project.cover.key) %>
+                    <div class="card-product-infos">
+                      <div class="d-flex w-100 justify-content-between">
+                        <h2><%= project.title %></h2>
+                        <div class="d-flex dasboard_card_icons">
+                          <%= link_to  "🖋", edit_project_path(project) %>
+                              <span>&nbsp;&nbsp;</span>
+                          <%= link_to  "🗑", project_path(project),
+                              data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
+                        </div>
+                      </div>
+                      <span class="work-date"><%= project.date.strftime("%d of %B, %Y") + " | " %></span>
+                      <span class="work-text">project</span>
+                      <p style="color: black !important;"><%= project.tagline%></p>
+                    </div>
+                  </div>
+                <% end  %>
+              <% end %>
+            <% else %>
+              <p>You have no projects yet!</p>
+            <% end %>
+          </ol>
+        </div>
+
+        <div class="tab-pane fade show" id="newproject" role="tabpanel">
+        <h2 class="mb-4">New Project</h2>
+          <%= render  "/projects/new" %>
         </div>
 
         <div class="tab-pane fade show" id="profile" role="tabpanel">
-
+          <h2 class="mb-3">Your Profile</h2>
           <%= simple_form_for(@user, url: registration_path(@user), html: { method: :put }) do |f| %>
             <%= f.error_notification %>
 

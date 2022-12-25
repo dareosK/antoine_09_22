@@ -7,10 +7,17 @@ class PagesController < ApplicationController
     @image = User.find_by(admin: true).moodboard_attachments.sample.key
   end
 
+  def works
+    @works = Writing.all.order(date: :desc) + Project.all.order(:date)
+    @quotes = User.find_by(admin: true).quotes
+  end
+
   def dashboard
     @user = current_user
     @writings = Writing.all.order(date: :desc)
     @writing = Writing.new
+    @projects = Project.all
+    @project = Project.new
     @cv = User.find_by(admin: true).cv.key
   end
 
