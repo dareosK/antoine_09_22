@@ -1,0 +1,16 @@
+<%= simple_form_for(@writing) do |f| %>
+  <%= f.input :title, label: false, placeholder: "Title" %>
+  <%#= f.input :author, label: false, placeholder: "Author" %>
+  <%#= f.input :body %>
+  <%= f.input :tagline, label: false, placeholder: "Tagline" %>
+  <%= f.rich_text_area :rich_body %>
+  <%= f.input :date, html5: true, input_html: { data: { controller: "flatpickr" } }   %>
+
+  <%= f.input :cover, as: :file, label: :photo %>
+  <div class="btn w-100 dashboard-button">
+    <%= f.submit %>
+  </div>
+  <br>
+  <br>
+  <br>
+<% end %>

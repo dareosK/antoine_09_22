@@ -18,9 +18,8 @@
 
   <body>
     <%= render "shared/navbar" %>
-
     <%= yield %>
-    <% unless action_name == "dashboard" || "edit" %>
+    <% unless params["action"] == "dashboard" || params["action"] == "edit" %>
       <%= render  "shared/footer" %>
     <% end %>
   </body>

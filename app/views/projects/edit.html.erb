@@ -1,0 +1,26 @@
+<div class="container">
+  <%= simple_form_for(@project) do |f| %>
+    <%= f.input :cover, as: :file, label: :photo %>
+    <%= f.input :title, placeholder: "Title" %>
+    <%= f.input :tagline, placeholder: "Tagline" %>
+    <%= f.input :text, placeholder: "Text" %>
+    <%= f.input :institution_name, placeholder: "Institution name" %>
+    <%= f.input :institution_address, placeholder: "Institution address" %>
+    <%= f.input :artists, placeholder: "Artists included" %>
+    <div class="d-flex w-100">
+      <%= f.input :date, html5: true, input_html: { data: { controller: "flatpickr" } }   %>
+      <%= f.input :end_date, html5: true, input_html: {  data: { controller: "flatpickr" } }   %>
+    </div>
+    <%= f.input :cover, as: :file, label: :photo %>
+    <%= f.input :photos,
+            as: :file,
+            input_html: { multiple: true },
+            label: :gallery %>
+    <div class="btn w-100 dashboard-button">
+      <%= f.submit %>
+    </div>
+    <br>
+    <br>
+    <br>
+  <% end %>
+</div>

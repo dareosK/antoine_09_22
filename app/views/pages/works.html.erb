@@ -1,0 +1,29 @@
+<div class="writings-wrapper">
+  <div class="masonry margin-from-quotes">
+    <% if @works %>
+      <% @works.each do |work| %>
+        <% if work.class == Writing %>
+          <%= link_to  writing_path(work) do %>
+            <div class="item">
+              <%= cl_image_tag(work.cover.key) %>
+              <h2><%= work.title %></h2>
+              <span class="work-date"><%= work.date.strftime("%d of %B, %Y") + " | " %></span>
+              <span class="work-text">text</span>
+              <p><%= work.tagline.truncate(100, ommission: "... (read more)")  %></p>
+            </div>
+          <% end %>
+        <% elsif work.class == Project %>
+          <%= link_to  project_path(work) do %>
+            <div class="item">
+              <%= cl_image_tag(work.cover.key) %>
+              <h2><%= work.title %></h2>
+              <span class="work-date"><%= work.date.strftime("%d of %B, %Y") + " | " %></span>
+              <span class="work-text">project</span>
+              <p><%= work.tagline.truncate(100, ommission: "... (read more)")  %></p>
+            </div>
+          <% end %>
+        <% end %>
+      <% end %>
+    <% end %>
+  </div>
+</div>
