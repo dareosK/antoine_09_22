@@ -100,7 +100,9 @@
                           input_html: { multiple: true },
                           label: :moodboard %>
               <%= f.input :cv, as: :file, label: :cv %>
-              <a id="cv-downloader" target="_blank" href="<%= cl_image_path @cv %>">Download my cv</a>
+              <% if @cv %>
+                <a id="cv-downloader" target="_blank" href="<%= cl_image_path @cv %>">Download my cv</a>
+              <% end %>
               <br>
               <br>
               <%= f.input :bio,
