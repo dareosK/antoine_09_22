@@ -10,6 +10,7 @@
         <a class="nav-link link-font" aria-current="page" href="#projects" data-bs-toggle="tab">🖼</a>
         <a class="nav-link link-font" href="#newproject" data-bs-toggle="tab">✍🏻</a>
         <a class="nav-link link-font" href="#profile" data-bs-toggle="tab">👱🏻‍♂️</a>
+        <a class="nav-link link-font" href="#moodboard" data-bs-toggle="tab">💡</a>
       </nav>
     <%# nav end %>
 
@@ -90,17 +91,29 @@
 
         <div class="tab-pane fade show" id="profile" role="tabpanel">
           <h2 class="mb-3">Your Profile</h2>
-          <%= simple_form_for(@user, url: registration_path(@user), html: { method: :put }) do |f| %>
+          <%= simple_form_for(@user, url: registration_path(@user), html: { method: :put }, data: { controller: "preview" }) do |f| %>
             <%= f.error_notification %>
 
             <div class="form-inputs">
-              <%= f.input :avatar, as: :file, label: :avatar %>
-              <%#= f.input :moodboard,
-                          as: :file,
-                          input_html: { multiple: true },
-                          label: :moodboard %>
+              <div class="d-flex w-100 justify-content-between">
+                <%= f.input :avatar,
+                            as: :file,
+                            label: :avatar,
+                            input_html: {
+                            class: 'd-none',
+                            data: { preview_target: "input" }
+                          }, label_html: { class: 'upload-photo'}, label: '📷 Add a portrait' %>
+                <div class="w-50">
+                  <%= image_tag "",
+                              width: 100,
+                              class: "hidden",
+                              data: { preview_target: "preview" } %>
+                </div>
+              </div>
               <%= f.input :cv, as: :file, label: :cv %>
-              <a id="cv-downloader" target="_blank" href="<%= cl_image_path @cv %>">Download my cv</a>
+              <% if @cv %>
+                <a id="cv-downloader" target="_blank" href="<%= cl_image_path @cv %>">Download my cv</a>
+              <% end %>
               <br>
               <br>
               <%= f.input :bio,
@@ -141,7 +154,27 @@
           <% end %>
         </div>
 
+         <div class="tab-pane fade show" id="moodboard" role="tabpanel">
+          <h2 class="mb-3">Your Moodboard</h2>
+          <%= simple_form_for(@user, url: registration_path(@user), html: { method: :put }) do |f| %>
+            <%= f.error_notification %>
+
+            <div class="form-inputs">
+              <%= f.input :moodboard,
+                          as: :file,
+                          input_html: { multiple: true },
+                          label: :moodboard %>
+            </div>
+
+            <div class="form-actions">
+              <%= f.button :submit, "Update", class: "w-100 dashboard-button", id: "text-white" %>
+            </div>
+            <br>
+            <br>
+            <br>
+          <% end %>
+        </div>
+
     </div>
   </div>
 </div>
-

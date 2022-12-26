@@ -1,9 +1,20 @@
 <div class="d-flex justify-content-center align-items-center">
   <div class="statement container d-flex flex-column">
-    <%= @bio %>
-    <a id="cv-downloader" target="_blank" href="<%= cl_image_path @cv %>">Download my cv</a>
+
+    <% if @bio %>
+      <%= @bio %>
+    <% end %>
+
+    <% if @cv %>
+      <a id="cv-downloader" target="_blank" href="<%= cl_image_path @cv %>">Download my cv</a>
+    <% end %>
+
     <br>
-    <%= cl_image_tag(@avatar) %>
+
+    <% if @avatar %>
+      <%= cl_image_tag(@avatar) %>
+    <% end %>
+
   </div>
 </div>
 

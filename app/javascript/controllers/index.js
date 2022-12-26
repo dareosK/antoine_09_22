@@ -9,3 +9,6 @@ application.register("flatpickr", FlatpickrController)
 
 import HelloController from "./hello_controller"
 application.register("hello", HelloController)
+
+import PreviewController from "./preview_controller"
+application.register("preview", PreviewController)
