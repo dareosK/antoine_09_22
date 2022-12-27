@@ -14,74 +14,20 @@
       </nav>
     <%# nav end %>
 
+    <%# content start %>
     <div class="container-60">
       <div class="tab-content" id="myTabContent">
         <div class="tab-pane fade show active" id="writings" role="tabpanel">
-          <ol class="ol-kill-padding">
-            <h2 class="mb-3">Your Texts</h2>
-            <% if @writings %>
-              <% @writings.each do |writing| %>
-                <%= link_to writing_path(writing) do %>
-                  <div class="card-product">
-                    <%= cl_image_tag(writing.cover.key) %>
-                    <div class="card-product-infos">
-                      <div class="d-flex w-100 justify-content-between">
-                        <h2><%= writing.title %></h2>
-                        <div class="d-flex dasboard_card_icons">
-                          <%= link_to  "🖋", edit_writing_path(writing) %>
-                              <span>&nbsp;&nbsp;</span>
-                          <%= link_to  "🗑", writing_path(writing),
-                              data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
-                        </div>
-                      </div>
-                      <span class="work-date"><%= writing.date.strftime("%d of %B, %Y") + " | " %></span>
-                      <span class="work-text">text</span>
-                      <p style="color: black !important;"><%= writing.tagline%></p>
-                    </div>
-                  </div>
-                <% end  %>
-              <% end %>
-            <% else %>
-              <p> You have not texts yet!</p>
-            <% end %>
-
-          </ol>
+          <%= render  "pages/dashboard/writings_tab" %>
         </div>
 
         <div class="tab-pane fade show" id="newwriting" role="tabpanel">
-          <h2 class="mb-4">New Text</h2>
+          <h2 class="mb-4">New Writing</h2>
           <%= render  "writings/new" %>
         </div>
 
         <div class="tab-pane fade show" id="projects" role="tabpanel">
-          <ol class="ol-kill-padding">
-            <h2 class="mb-3">Your Projects</h2>
-            <% if @projects %>
-              <% @projects.each do |project| %>
-                <%= link_to project_path(project) do %>
-                  <div class="card-product">
-                    <%#= cl_image_tag(project.cover.key) %>
-                    <div class="card-product-infos">
-                      <div class="d-flex w-100 justify-content-between">
-                        <h2><%= project.title %></h2>
-                        <div class="d-flex dasboard_card_icons">
-                          <%= link_to  "🖋", edit_project_path(project) %>
-                              <span>&nbsp;&nbsp;</span>
-                          <%= link_to  "🗑", project_path(project),
-                              data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
-                        </div>
-                      </div>
-                      <span class="work-date"><%= project.date.strftime("%d of %B, %Y") + " | " %></span>
-                      <span class="work-text">project</span>
-                      <p style="color: black !important;"><%= project.tagline%></p>
-                    </div>
-                  </div>
-                <% end  %>
-              <% end %>
-            <% else %>
-              <p>You have no projects yet!</p>
-            <% end %>
-          </ol>
+          <%= render  "pages/dashboard/projects_tab" %>
         </div>
 
         <div class="tab-pane fade show" id="newproject" role="tabpanel">
@@ -90,91 +36,13 @@
         </div>
 
         <div class="tab-pane fade show" id="profile" role="tabpanel">
-          <h2 class="mb-3">Your Profile</h2>
-          <%= simple_form_for(@user, url: registration_path(@user), html: { method: :put }, data: { controller: "preview" }) do |f| %>
-            <%= f.error_notification %>
-
-            <div class="form-inputs">
-              <div class="d-flex w-100 justify-content-between">
-                <%= f.input :avatar,
-                            as: :file,
-                            label: :avatar,
-                            input_html: {
-                            class: 'd-none',
-                            data: { preview_target: "input" }
-                          }, label_html: { class: 'upload-photo'}, label: '📷 Add a portrait' %>
-                <div class="w-50">
-                  <%= image_tag "",
-                              width: 100,
-                              class: "hidden",
-                              data: { preview_target: "preview" } %>
-                </div>
-              </div>
-              <%= f.input :cv, as: :file, label: :cv %>
-              <% if @cv %>
-                <a id="cv-downloader" target="_blank" href="<%= cl_image_path @cv %>">Download my cv</a>
-              <% end %>
-              <br>
-              <br>
-              <%= f.input :bio,
-                          # label: false,
-                          placeholder: "Bio",
-                          required: false %>
-              <%= f.input :contact_mail,
-                          # label: false,
-                          placeholder: "Contact mail",
-                          hint: "This is the mail you want to show on the contact page",
-                          required: false %>
-              <%= f.input :quotes,
-                          # label: false,
-                          placeholder: "Quotes",
-                          hint: "Say something fun for your footer!",
-                          required: false %>
-              <%= f.input :email, required: true, autofocus: true %>
-
-              <%= f.input :password,
-                          hint: "leave it blank if you don't want to change it",
-                          required: false,
-                          input_html: { autocomplete: "new-password" } %>
-              <%= f.input :password_confirmation,
-                          required: false,
-                          input_html: { autocomplete: "new-password" } %>
-              <%= f.input :current_password,
-                          hint: "we need your current password to confirm your changes",
-                          required: true,
-                          input_html: { autocomplete: "current-password" } %>
-            </div>
-
-            <div class="form-actions">
-              <%= f.button :submit, "Update", class: "w-100 dashboard-button", id: "text-white" %>
-            </div>
-            <br>
-            <br>
-            <br>
-          <% end %>
+          <%= render  "pages/dashboard/profile_tab" %>
         </div>
 
          <div class="tab-pane fade show" id="moodboard" role="tabpanel">
-          <h2 class="mb-3">Your Moodboard</h2>
-          <%= simple_form_for(@user, url: registration_path(@user), html: { method: :put }) do |f| %>
-            <%= f.error_notification %>
-
-            <div class="form-inputs">
-              <%= f.input :moodboard,
-                          as: :file,
-                          input_html: { multiple: true },
-                          label: :moodboard %>
-            </div>
-
-            <div class="form-actions">
-              <%= f.button :submit, "Update", class: "w-100 dashboard-button", id: "text-white" %>
-            </div>
-            <br>
-            <br>
-            <br>
-          <% end %>
+          <%= render  "pages/dashboard/moodboard_tab" %>
         </div>
-
     </div>
+    <%# content end %>
   </div>
 </div>

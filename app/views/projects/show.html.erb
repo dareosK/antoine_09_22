@@ -5,7 +5,7 @@
 
       <div class="header-info-project">
         <p class="header-author"><%= @project.institution_name.upcase %></p>
-        <p class="header-date"><%= @project.date.strftime("%-d %B %y") %> to <%= @project.end_date.strftime("%-d %B %y") %></p>
+        <p class="header-date"><%= @project.date.strftime("%-d %B %y") %> <span class="text-dark">to</span> <%= @project.end_date.strftime("%-d %B %y") %></p>
       </div>
 
       <div class="header-title">

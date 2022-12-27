@@ -1,0 +1,29 @@
+<ol class="ol-kill-padding">
+  <h2 class="mb-3">Your Texts</h2>
+  <% if @writings %>
+    <% @writings.each do |writing| %>
+      <%= link_to writing_path(writing) do %>
+        <div class="card-product">
+          <%= cl_image_tag(writing.cover.key) %>
+          <div class="card-product-infos">
+            <div class="d-flex w-100 justify-content-between">
+              <h2><%= writing.title %></h2>
+              <div class="d-flex dasboard_card_icons">
+                <%= link_to  "🖋", edit_writing_path(writing) %>
+                    <span>&nbsp;&nbsp;</span>
+                <%= link_to  "🗑", writing_path(writing),
+                    data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
+              </div>
+            </div>
+            <span class="work-date"><%= writing.date.strftime("%d of %B, %Y") + " | " %></span>
+            <span class="work-text">text</span>
+            <p style="color: black !important;"><%= writing.tagline%></p>
+          </div>
+        </div>
+      <% end  %>
+    <% end %>
+  <% else %>
+    <p> You have not texts yet!</p>
+  <% end %>
+
+</ol>
