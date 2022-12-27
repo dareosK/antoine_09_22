@@ -17,7 +17,7 @@ class WritingsController < ApplicationController
     if @writing.save!
       redirect_to writing_path(@writing)
     else
-      render :new
+      render :new, status: :unprocessable_entity
     end
   end
 
@@ -31,7 +31,7 @@ class WritingsController < ApplicationController
     if @writing.save!
       redirect_to writing_path(@writing)
     else
-      render :new, status: :unprocessable_entity
+      render :edit, status: :unprocessable_entity
     end
   end
 
