@@ -1,5 +1,5 @@
 <% if @image %>
-  <div class="fullscreen fullscreen-img" style="background-image: url('<%= cl_image_path @image %>')">
+  <div class="fullscreen fullscreen-img" style="background-image: url('<%= cl_image_path @image.key %>')">
   </div>
 <% else %>
   <div class="fullscreen fullscreen-img" style="background-image: url('<%#= cl_image_path @image %>https://source.unsplash.com/')">
