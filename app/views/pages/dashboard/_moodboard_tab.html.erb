@@ -30,7 +30,7 @@
 
       <% if @moodboard %>
         <% @moodboard.each do |pin| %>
-          <li class="item" data-preview-target="previews"><%= cl_image_tag pin.key %></li>
+          <li class="item" data-preview-target="previous"><%= cl_image_tag pin.key %></li>
         <% end %>
       <% end %>
 

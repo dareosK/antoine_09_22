@@ -1,16 +1,18 @@
 import { Controller } from '@hotwired/stimulus';
 
 export default class extends Controller {
-  static targets = ['input', 'preview', 'list', 'previews'];
+  static targets = ['input', 'preview', 'list', 'previous'];
 
   connect() {
     this.inputTarget.addEventListener('change', () => this.displayPreview());
   }
 
   displayPreview() {
-    console.log("t")
+    console.log("test")
     if (this.inputTarget.files && this.inputTarget.files[0]) {
       if (this.inputTarget.files.length > 1) {
+        // cleanup the list
+        this.listTarget.innerHTML = ""
         this.displayMultiple(this.inputTarget.files)
       } else {
         const reader = new FileReader();
@@ -19,22 +21,31 @@ export default class extends Controller {
         }
         reader.readAsDataURL(this.inputTarget.files[0])
         this.previewTarget.classList.remove('hidden');
-        this.previewsTarget.classList.add('d-none');
+        if (this.previousTarget) {
+          console.log("inside single if statement")
+          this.previousTarget.innerHTML = "";
+        }
       }
       }
     }
 
   displayMultiple(fileList) {
+
     Array.from(fileList).forEach(file => {
       const reader = new FileReader();
       reader.onload = (event) => {
         const picFile = event.target;
         const div = document.createElement("div");
         const image = div.innerHTML = `<li class="item"><img class="thumbnail" src="${picFile.result}" title="${picFile.name}"/></li>`;
-        console.log(image)
-        console.log(this.listTarget)
+        // console.log(image)
+        // console.log(this.listTarget)
         this.previewTarget.classList.remove('hidden');
-        this.previewsTarget.classList.add('d-none');
+        // this.previousTarget ? this.previousTarget.innerHTML = "" : continue
+        if (this.previousTarget) {
+          console.log("inside if statement")
+          this.previousTarget.innerHTML = "";
+        }
+        this.previewTarget.src = ""
         this.listTarget.insertAdjacentHTML("beforeend", image);
       }
       reader.readAsDataURL(file)
@@ -42,24 +53,3 @@ export default class extends Controller {
      });
   }
 }
-
-// document.querySelector("#files").addEventListener("change", (e) => { //CHANGE EVENT FOR UPLOADING PHOTOS
-//   if (window.File && window.FileReader && window.FileList && window.Blob) { //CHECK IF FILE API IS SUPPORTED
-//     const files = e.target.files; //FILE LIST OBJECT CONTAINING UPLOADED FILES
-//     const output = document.querySelector("#result");
-//     output.innerHTML = "";
-//     for (let i = 0; i < files.length; i++) { // LOOP THROUGH THE FILE LIST OBJECT
-//         if (!files[i].type.match("image")) continue; // ONLY PHOTOS (SKIP CURRENT ITERATION IF NOT A PHOTO)
-//         const picReader = new FileReader(); // RETRIEVE DATA URI
-//         picReader.addEventListener("load", function (event) { // LOAD EVENT FOR DISPLAYING PHOTOS
-//           const picFile = event.target;
-//           const div = document.createElement("div");
-//           div.innerHTML = `<img class="thumbnail" src="${picFile.result}" title="${picFile.name}"/>`;
-//           output.appendChild(div);
-//         });
-//         picReader.readAsDataURL(files[i]); //READ THE IMAGE
-//     }
-//   } else {
-//     alert("Your browser does not support File API");
-//   }
-// });
