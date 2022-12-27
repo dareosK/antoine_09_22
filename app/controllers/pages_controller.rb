@@ -27,7 +27,7 @@ class PagesController < ApplicationController
   end
 
   def about
-    @bio = User.find_by(admin: true).bio
+    @bio = User.find_by(admin: true).rich_bio
     @cv = User.find_by(admin: true).cv.key
     @avatar = User.find_by(admin: true).avatar.key
     @quotes = User.find_by(admin: true).quotes

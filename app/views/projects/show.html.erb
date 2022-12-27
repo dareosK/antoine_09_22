@@ -31,7 +31,8 @@
   </div>
 
 
-    <p id="project-text"><%= @project.text %></p>
+    <p id="project-text"><%= @project.rich_body %></p>
+    <div class="article-border-bottom"></div>
 
     <div class="masonry-grid">
     <% @project.photos.each do |photo| %>
@@ -42,14 +43,14 @@
 
 <style>
 .masonry-grid {
-  width: 100%;
+  width: 100% !important;
 }
 
 .grid-item {
   width: 28%; margin: 0 16px 16px 0;
 }
 
-/* .masonry-grid {
+.masonry-grid {
   /* Masonry container */
   width: 70%;
   margin: 0 auto;
@@ -65,11 +66,11 @@
 } */
 </style>
 
-<script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script>
+<%# <script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script>
 <script>
   var elem = document.querySelector('.masonry-grid');
   var msnry = new Masonry( elem, {
     // options
     itemSelector: '.grid-item'
   });
-</script>
+</script> %>

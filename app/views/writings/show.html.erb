@@ -9,6 +9,9 @@
 
       <div class="header-title">
         <h1><%= @writing.title %></h1>
+        <% if current_user && current_user.admin? %>
+          <%= link_to  "🖋", edit_writing_path(@writing) %>
+        <% end %>
         <p style="color: grey;"><%= @writing.tagline %></p>
       </div>
 
