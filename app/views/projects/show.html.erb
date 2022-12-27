@@ -15,7 +15,7 @@
             <%= link_to  "🖋", edit_project_path(@project) %>
           <% end %>
         </div>
-        <p style="color: grey;"><%= @project.artists %></p>
+        <p style="color: grey;">with <%= @project.artists %></p>
       </div>
 
     </div>
@@ -31,14 +31,15 @@
   </div>
 
 
-    <p id="project-text"><%= @project.rich_body %></p>
-    <div class="article-border-bottom"></div>
+  <p id="project-text"><%= @project.rich_body %></p>
+  <div class="border-bottom border-dark mb-4"></div>
 
-    <div class="masonry-grid">
-    <% @project.photos.each do |photo| %>
-      <%= cl_image_tag photo.key, class: "grid-item"%>
-    <% end %>
+  <div class="masonry-grid" data-controller="lightbox">
+  <% @project.photos.each do |photo| %>
+    <%= cl_image_tag photo.key, class: "grid-item"%>
+  <% end %>
   </div>
+  <div class="article-border-bottom mt-2"></div>
 </div>
 
 <style>
