@@ -16,7 +16,7 @@ class PagesController < ApplicationController
     @user = current_user
     @writings = Writing.all.order(date: :desc)
     @writing = Writing.new
-    @projects = Project.all
+    @projects = Project.all.order(date: :desc)
     @project = Project.new
     @cv = User.find_by(admin: true).cv.key
   end
