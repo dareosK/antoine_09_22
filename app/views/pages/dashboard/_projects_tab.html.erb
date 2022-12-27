@@ -1,0 +1,30 @@
+<ol class="ol-kill-padding">
+  <h2 class="mb-3">Your Projects</h2>
+  <% if @projects %>
+    <% @projects.each do |project| %>
+      <%= link_to project_path(project) do %>
+        <div class="card-product">
+          <% if project.cover %>
+            <%= cl_image_tag(project.cover.key) %>
+          <% end %>
+          <div class="card-product-infos">
+            <div class="d-flex w-100 justify-content-between">
+              <h2><%= project.title %></h2>
+              <div class="d-flex dasboard_card_icons">
+                <%= link_to  "🖋", edit_project_path(project) %>
+                    <span>&nbsp;&nbsp;</span>
+                <%= link_to  "🗑", project_path(project),
+                    data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
+              </div>
+            </div>
+            <span class="work-date"><%= project.date.strftime("%d of %B, %Y") + " | " %></span>
+            <span class="work-text">project</span>
+            <p style="color: black !important;"><%= project.tagline%></p>
+          </div>
+        </div>
+      <% end  %>
+    <% end %>
+  <% else %>
+    <p>You have no projects yet!</p>
+  <% end %>
+</ol>

@@ -1,7 +1,7 @@
 import { Controller } from '@hotwired/stimulus';
 
 export default class extends Controller {
-  static targets = ['input', 'preview', 'list'];
+  static targets = ['input', 'preview', 'list', 'previews'];
 
   connect() {
     this.inputTarget.addEventListener('change', () => this.displayPreview());
@@ -12,8 +12,6 @@ export default class extends Controller {
     if (this.inputTarget.files && this.inputTarget.files[0]) {
       if (this.inputTarget.files.length > 1) {
         this.displayMultiple(this.inputTarget.files)
-      } else if (this.inputTarget.files > 1) {
-        this.displayMultiple()
       } else {
         const reader = new FileReader();
         reader.onload = (event) => {
@@ -21,6 +19,7 @@ export default class extends Controller {
         }
         reader.readAsDataURL(this.inputTarget.files[0])
         this.previewTarget.classList.remove('hidden');
+        this.previewsTarget.classList.add('d-none');
       }
       }
     }
@@ -34,11 +33,12 @@ export default class extends Controller {
         const image = div.innerHTML = `<li class="item"><img class="thumbnail" src="${picFile.result}" title="${picFile.name}"/></li>`;
         console.log(image)
         console.log(this.listTarget)
+        this.previewTarget.classList.remove('hidden');
+        this.previewsTarget.classList.add('d-none');
         this.listTarget.insertAdjacentHTML("beforeend", image);
       }
       reader.readAsDataURL(file)
       console.log("in displayMultiple")
-        // this.listTarget.classList.remove('hidden');
      });
   }
 }

@@ -5,7 +5,7 @@
   <%= f.input :tagline, label: false, placeholder: "Tagline" %>
   <%= f.rich_text_area :rich_body %>
   <%= f.input :date, html5: true, input_html: { data: { controller: "flatpickr" } }  %>
-  <%= f.input :cover, as: :file, label: :photo %>
+  <%= f.input :cover, as: :file, label: "cover photo" %>
   <div class="btn w-100 dashboard-button">
     <%= f.submit %>
   </div>
