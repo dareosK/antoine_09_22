@@ -115,7 +115,7 @@
                             data: { preview_target: "input" }
                           },
                           label_html: {
-                            class: 'upload-photo'
+                            class: 'upload-photo mt-3'
                             },
                           label: '📝 Add your CV' %>
               <% if @cv %>
@@ -167,15 +167,23 @@
             <%= f.error_notification %>
 
             <div class="form-inputs">
-              <%= f.input :moodboard,
-                          as: :file,
-                          # input_html: { multiple: true },
-                          label: :moodboard,
-                            input_html: {
-                            multiple: true,
-                            class: 'd-none',
-                            data: { preview_target: "input" }
-                          }, label_html: { class: 'upload-photo'}, label: '📷 Add your moodboard' %>
+
+                <%= f.input :moodboard,
+                            as: :file,
+                            # input_html: { multiple: true },
+                            label: :moodboard,
+                              input_html: {
+                              multiple: true,
+                              class: 'd-none',
+                              data: { preview_target: "input" }
+                            }, label_html: { class: 'upload-photo'}, label: '📷 Add your moodboard' %>
+                <%= f.input :current_password,
+                            hint: "we need your current password to confirm your changes",
+                            label: false,
+                            placeholder: "Your current password",
+                            required: true,
+                            input_html: { autocomplete: "current-password" } %>
+
             </div>
 
             <div class="form-actions">
