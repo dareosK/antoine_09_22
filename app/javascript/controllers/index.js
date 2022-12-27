@@ -12,3 +12,6 @@ application.register("hello", HelloController)
 
 import PreviewController from "./preview_controller"
 application.register("preview", PreviewController)
+
+import Lightbox from 'stimulus-lightbox'
+application.register('lightbox', Lightbox)

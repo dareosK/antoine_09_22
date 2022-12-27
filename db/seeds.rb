@@ -16,7 +16,7 @@ one = User.create!(
     password: "123456",
     contact_mail: "hello@antoinechampenois.com",
     quotes: Faker::Quotes::Shakespeare.king_richard_iii_quote,
-    bio: "Après une formation littéraire et philosophique classique, il intègre la Sorbonne en histoire de l’art avant de se consacrer pleinement à l’art contemporain et au commissariat d’exposition en 2019. Son champ d’investigation s’étend des nouvelles technologies et de l’ère digitale aux mécanismes de la pop culture. Cette spécialisation progressive et son goût pour l’écriture l’amènent à collaborer régulièrement avec des magazines ou directement auprès des artistes. Après un passage par TRAM, réseau d’art contemporain d’île-de-France, lui ayant permis de comprendre les enjeux propres au territoire francilien et de mettre à profit des publics son expertise engagée auprès de la jeune création, son parcours l’a mené au FRAC Lorraine (Metz)  pour la production d’expositions et la coordination d’édition.
+    rich_bio: "Après une formation littéraire et philosophique classique, il intègre la Sorbonne en histoire de l’art avant de se consacrer pleinement à l’art contemporain et au commissariat d’exposition en 2019. Son champ d’investigation s’étend des nouvelles technologies et de l’ère digitale aux mécanismes de la pop culture. Cette spécialisation progressive et son goût pour l’écriture l’amènent à collaborer régulièrement avec des magazines ou directement auprès des artistes. Après un passage par TRAM, réseau d’art contemporain d’île-de-France, lui ayant permis de comprendre les enjeux propres au territoire francilien et de mettre à profit des publics son expertise engagée auprès de la jeune création, son parcours l’a mené au FRAC Lorraine (Metz)  pour la production d’expositions et la coordination d’édition.
 
     Son attrait pour les pratiques collaboratives débordant la sphère de l’art contemporain l’ont conduit naturellement vers une équipe où la transdisciplinarité est une signature, il rejoint le studio Jérôme Sans en mars 2022.",
     admin: true
@@ -45,7 +45,7 @@ puts "======🖼 Creating 5 Projects"
     artists: "#{Faker::Artist.name}, #{Faker::GreekPhilosophers.name}, #{Faker::Artist.name}, #{Faker::Artist.name}",
     institution_name: "Galerie du Lendemain",
     institution_address: "#{Faker::Address.street_name}, #{Faker::Address.city}",
-    text: (Faker::Lorem.paragraphs(number: 20)).join,
+    rich_body: (Faker::Lorem.paragraphs(number: 20)).join,
     date: Faker::Date.between(from: '2020-09-23', to: '2020-09-25'),
     end_date: Faker::Date.between(from: '2020-10-10', to: '2020-10-15'),
   )
