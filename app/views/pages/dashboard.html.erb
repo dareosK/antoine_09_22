@@ -44,7 +44,6 @@
             <% else %>
               <p> You have not texts yet!</p>
             <% end %>
-
           </ol>
         </div>
 
@@ -110,7 +109,15 @@
                               data: { preview_target: "preview" } %>
                 </div>
               </div>
-              <%= f.input :cv, as: :file, label: :cv %>
+              <%= f.input :cv, as: :file,
+                          input_html: {
+                            class: 'd-none',
+                            data: { preview_target: "input" }
+                          },
+                          label_html: {
+                            class: 'upload-photo'
+                            },
+                          label: '📝 Add your CV' %>
               <% if @cv %>
                 <a id="cv-downloader" target="_blank" href="<%= cl_image_path @cv %>">Download my cv</a>
               <% end %>
@@ -156,19 +163,40 @@
 
          <div class="tab-pane fade show" id="moodboard" role="tabpanel">
           <h2 class="mb-3">Your Moodboard</h2>
-          <%= simple_form_for(@user, url: registration_path(@user), html: { method: :put }) do |f| %>
+          <%= simple_form_for(@user, url: registration_path(@user), html: { method: :put }, data: { controller: "preview" }) do |f| %>
             <%= f.error_notification %>
 
             <div class="form-inputs">
               <%= f.input :moodboard,
                           as: :file,
-                          input_html: { multiple: true },
-                          label: :moodboard %>
+                          # input_html: { multiple: true },
+                          label: :moodboard,
+                            input_html: {
+                            multiple: true,
+                            class: 'd-none',
+                            data: { preview_target: "input" }
+                          }, label_html: { class: 'upload-photo'}, label: '📷 Add your moodboard' %>
             </div>
 
             <div class="form-actions">
               <%= f.button :submit, "Update", class: "w-100 dashboard-button", id: "text-white" %>
             </div>
+            <div class="w-100">
+              <ul class="masonry masonry-col-2 w-100 pt-3 list-style-none" id="preview" data-preview-target="list">
+
+                <% if @moodboard %>
+                  <% @moodboard.each do |pin| %>
+                    <li class="item"><%= cl_image_tag pin.key %></li>
+                  <% end %>
+                <% end %>
+
+              </ul>
+              <%= image_tag "",
+                          width: 100,
+                          class: "hidden",
+                          data: { preview_target: "preview" } %>
+            </div>
+
             <br>
             <br>
             <br>
