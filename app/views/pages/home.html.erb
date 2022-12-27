@@ -1,4 +1,9 @@
-<div class="fullscreen fullscreen-img" style="background-image: url('<%#= cl_image_path @image %>https://source.unsplash.com/')">
-</div>
+<% if @image %>
+  <div class="fullscreen fullscreen-img" style="background-image: url('<%= cl_image_path @image %>')">
+  </div>
+<% else %>
+  <div class="fullscreen fullscreen-img" style="background-image: url('<%#= cl_image_path @image %>https://source.unsplash.com/')">
+  </div>
+<% end %>
 
 <%= render  "shared/footer" %>

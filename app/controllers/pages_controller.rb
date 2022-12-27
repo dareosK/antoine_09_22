@@ -4,7 +4,7 @@ class PagesController < ApplicationController
   def home
     @quotes = User.find_by(admin: true).quotes || "Make sure to add some funky quotes on your dashboard"
     # retrieve the random key from one of the moodboard pictures to showcase on the front page
-    # @image = User.find_by(admin: true).moodboard_attachments.sample.key || "https://source.unsplash.com/"
+    @image = User.find_by(admin: true).moodboard_attachments.sample.key
   end
 
   def works
