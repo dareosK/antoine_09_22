@@ -18,7 +18,7 @@
               <%= cl_image_tag(work.cover.key) %>
               <h2><%= work.title %></h2>
               <span class="work-date"><%= work.date.strftime("%d of %B, %Y") + " | " %></span>
-              <span class="work-text">project</span>
+              <span class="work-text"><%= work.project_type %></span>
               <p><%= work.tagline.truncate(100, ommission: "... (read more)")  %></p>
             </div>
           <% end %>

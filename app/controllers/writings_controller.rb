@@ -1,11 +1,6 @@
 class WritingsController < ApplicationController
   skip_before_action :authenticate_user!
 
-  def index
-    @writings = Writing.all.order(date: :desc)
-    @quotes = User.find_by(admin: true).quotes
-  end
-
   def show
     @writing = Writing.find(params[:id])
     @quotes = User.find_by(admin: true).quotes

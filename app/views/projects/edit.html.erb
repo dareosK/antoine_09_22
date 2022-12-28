@@ -1,26 +1,73 @@
 <div class="container">
-  <%= simple_form_for(@project) do |f| %>
-    <%= f.input :title, placeholder: "Title" %>
-    <%= f.input :tagline, placeholder: "Tagline" %>
-    <%= f.input :project_type, collection: %w(exhibition project) %>
-    <%= f.rich_text_area :rich_body, placeholder: "Text" %>
-    <%= f.input :institution_name, placeholder: "Institution name" %>
-    <%= f.input :institution_address, placeholder: "Institution address" %>
-    <%= f.input :artists, placeholder: "Artists included" %>
-    <div class="d-flex w-100">
-      <%= f.input :date, html5: true, input_html: { data: { controller: "flatpickr" } }   %>
-      <%= f.input :end_date, html5: true, input_html: {  data: { controller: "flatpickr" } }   %>
+
+  <%# nav start %>
+  <nav class="nav nav-tabs">
+    <a class="nav-link active" aria-current="page" href="#projects" data-bs-toggle="tab">📝</a>
+    <a class="nav-link" href="#newproject" data-bs-toggle="tab">📸</a>
+  </nav>
+  <%# nav end %>
+  <%# content start %>
+  <div class="tab-content">
+    <div class="tab-pane fade show active" id="projects">
+      <%= simple_form_for(@project) do |f| %>
+        <%= f.input :title, placeholder: "Title" %>
+        <%= f.input :tagline, placeholder: "Tagline" %>
+        <%= f.input :project_type, collection: %w(exhibition project) %>
+        <%= f.rich_text_area :rich_body, placeholder: "Text" %>
+        <%= f.input :institution_name, placeholder: "Institution name" %>
+        <%= f.input :institution_address, placeholder: "Institution address" %>
+        <%= f.input :artists, placeholder: "Artists included" %>
+        <div class="d-flex w-100">
+          <%= f.input :date, html5: true, input_html: { data: { controller: "flatpickr" } }   %>
+          <%= f.input :end_date, html5: true, input_html: {  data: { controller: "flatpickr" } }   %>
+        </div>
+        <%= f.input :cover, as: :file, label: "cover photo" %>
+        <div class="btn w-100 dashboard-button">
+          <%= f.submit %>
+        </div>
+        <% end %>
     </div>
-    <%= f.input :cover, as: :file, label: "cover photo" %>
-    <%= f.input :photos,
-            as: :file,
-            input_html: { multiple: true },
-            label: :gallery %>
-    <div class="btn w-100 dashboard-button">
-      <%= f.submit %>
+    <div class="tab-pane fade show" id="newproject">
+      <div class="container">
+      <%= simple_form_for(@project, data: { controller: "preview" }) do |f| %>
+        <%= f.input :photos,
+                as: :file,
+                input_html: { multiple: true,
+                  class: 'd-none',
+                  data: { preview_target: "input" }
+                }, label_html: { class: 'upload-photo'}, label: '📷 Edit project gallery' %>
+        <div class="btn w-100 dashboard-button">
+          <%= f.submit %>
+        </div>
+
+      <%# MOODBOARD PREVIEW START %>
+      <div class="w-100">
+        <ul class="masonry masonry-col-2 w-100 pt-3 list-style-none" id="previous">
+          <div class="existing-moodboard-wrapper" data-preview-target="previous">
+            <% if @project.photos.attached? %>
+                <% @project.photos.each do |pin| %>
+                  <li class="item" ><%= cl_image_tag pin.key %></li>
+                <% end %>
+            <% end %>
+          </div>
+        </ul>
+        <ul class="masonry masonry-col-2 w-100 pt-3 list-style-none" id="preview" data-preview-target="list">
+
+
+        </ul>
+        <%= image_tag "",
+                    width: 100,
+                    data: { preview_target: "preview" } %>
+      </div>
+      <%# MOODBOARD PREVIEW END %>
+      <% end %>
     </div>
+  </div>
+  <%# content end %>
+
+
     <br>
     <br>
     <br>
-  <% end %>
+
 </div>

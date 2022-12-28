@@ -8,7 +8,8 @@ class PagesController < ApplicationController
   end
 
   def works
-    @works = Writing.all.order(date: :desc) + Project.all.order(:date)
+    # this could be faster
+    @works = (Writing.all.order(date: :desc) + Project.all.order(:date)).sort_by(&:date).reverse!
     @quotes = User.find_by(admin: true).quotes
   end
 

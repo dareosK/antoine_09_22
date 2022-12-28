@@ -40,6 +40,7 @@ puts "======🖼 Creating 5 Projects"
 5.times do
   project = Project.create!(
     user_id: User.first.id,
+    project_type: %w(exhibition project).sample
     title: Faker::Quote.yoda,
     tagline: Faker::Quotes::Shakespeare.as_you_like_it_quote,
     artists: "#{Faker::Artist.name}, #{Faker::GreekPhilosophers.name}, #{Faker::Artist.name}, #{Faker::Artist.name}",
