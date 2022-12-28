@@ -72,6 +72,7 @@
     }
 
   .article-top {
+    max-height: 900px;
     flex-direction: column-reverse;
   }
 
@@ -86,13 +87,15 @@
 
   .article-header {
     display: flex;
-    flex-direction: column;
+    flex-direction: column-reverse;
     flex-grow: 0;
     align-items: start;
     text-align: start;
   }
 
   .header-info {
+    text-align: end;
+    margin-top: 8px;
     position: static;
     justify-content: start;
     font-size: 0.7rem !important;

@@ -8,7 +8,7 @@
       </div>
 
       <div class="header-title">
-        <h1><%= @writing.title %></h1>
+        <h2><%= @writing.title.upcase %></h2>
         <% if current_user && current_user.admin? %>
           <%= link_to  "🖋", edit_writing_path(@writing) %>
         <% end %>
