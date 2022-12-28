@@ -1,13 +1,29 @@
-.masonry {
+.masonry,
+.masonry-grid {
   /* Masonry container */
-  width: 70%;
-  margin: 0 auto;
   column-count: 3;
   column-gap: 2rem;
 
   li {
     list-style: none;
   }
+}
+
+.masonry {
+  width: 70%;
+  margin: 0 auto;
+}
+
+.masonry-grid {
+  width: 100%;
+}
+
+
+.grid-item {
+  /* Masonry bricks or child elements */
+  display: inline-block;
+  margin: 0 0 1rem;
+  width: 100%;
 }
 
 ul {
@@ -34,10 +50,16 @@ ul {
 }
 
 @media screen and (max-width: 1400px) {
-  .masonry {
+  .masonry{
     /* Masonry container */
     width: 85%;
     column-count: 2;
+  }
+
+  .masonry-grid {
+    /* Masonry container */
+      width: 65%;
+      column-count: 2;
   }
 }
 
@@ -46,6 +68,10 @@ ul {
     /* Masonry container */
     width: 90%;
     column-count: 1;
+  }
+
+  .masonry-grid {
+    width: 100%;
   }
 
   .masonry-col-2 {

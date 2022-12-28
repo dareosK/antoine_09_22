@@ -1,0 +1,14 @@
+<div class="container">
+  <%= simple_form_for(@project) do |f| %>
+    <%= f.input :photos,
+            as: :file,
+            input_html: { multiple: true },
+            label: :gallery %>
+    <div class="btn w-100 dashboard-button">
+      <%= f.submit %>
+    </div>
+    <br>
+    <br>
+    <br>
+  <% end %>
+</div>
