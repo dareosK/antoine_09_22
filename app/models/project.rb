@@ -10,5 +10,6 @@ class Project < ApplicationRecord
   validates :date, presence: true
   validates :project_type, presence: true
 
+  # action text
   has_rich_text :rich_body
 end

@@ -18,7 +18,7 @@ class PagesController < ApplicationController
     @avatar = User.find_by(admin: true).avatar.key
     @writings = Writing.all.order(date: :desc)
     @writing = Writing.new
-    @projects = Project.all
+    @projects = Project.all.order(date: :desc)
     @project = Project.new
     @cv = User.find_by(admin: true).cv.key
     @moodboard = User.find_by(admin: true).moodboard

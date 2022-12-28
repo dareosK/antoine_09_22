@@ -5,12 +5,12 @@ class ProjectsController < ApplicationController
 
   def create
     @project = Project.new(project_params)
-    @project.user = current_user
+    @project.user_id = current_user.id
     if @project.save!
     # no need for app/views/projects/create.html.erb
     redirect_to project_path(@project)
     else
-      render "pages/dashboard"
+      render "pages/dashboard", status: :unprocessable_entity
     end
   end
 

@@ -15,7 +15,11 @@
             <%= link_to  "🖋", edit_project_path(@project) %>
           <% end %>
         </div>
-        <p style="color: grey;">with <%= @project.artists %></p>
+
+        <% if !@project.artists.empty? %>
+          <p style="color: grey;">with <%= @project.artists %></p>
+        <% end %>
+
       </div>
 
     </div>
