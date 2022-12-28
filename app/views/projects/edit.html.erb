@@ -2,6 +2,7 @@
   <%= simple_form_for(@project) do |f| %>
     <%= f.input :title, placeholder: "Title" %>
     <%= f.input :tagline, placeholder: "Tagline" %>
+    <%= f.input :project_type, collection: %w(exhibition project) %>
     <%= f.rich_text_area :rich_body, placeholder: "Text" %>
     <%= f.input :institution_name, placeholder: "Institution name" %>
     <%= f.input :institution_address, placeholder: "Institution address" %>

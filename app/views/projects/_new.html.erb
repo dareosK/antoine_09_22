@@ -1,8 +1,8 @@
 <%= simple_form_for(@project) do |f| %>
   <%= f.input :title, label: false, placeholder: "Title" %>
   <%= f.input :tagline, label: false, placeholder: "Tagline" %>
+  <%= f.input :project_type, collection: %w(exhibition project) %>
   <%= f.rich_text_area :rich_body, placeholder: "Text" %>
-  <%#= f.input :text, label: false, placeholder: "Text" %>
   <%= f.input :institution_name, label: false, placeholder: "Institution name" %>
   <%= f.input :institution_address, label: false, placeholder: "Institution address" %>
   <%= f.input :artists, label: false, placeholder: "Artists included" %>
