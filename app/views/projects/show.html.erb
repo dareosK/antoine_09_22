@@ -10,7 +10,7 @@
 
       <div class="header-title">
         <div class="d-flex">
-          <h1><%= @project.title %></h1>
+          <h1><%= @project.title.upcase %></h1>
           <% if current_user && current_user.admin? %>
             <%= link_to  "🖋", edit_project_path(@project) %>
           <% end %>

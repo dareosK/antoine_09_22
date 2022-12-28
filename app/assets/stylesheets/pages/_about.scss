@@ -1,8 +1,3 @@
-#cv-downloader {
-  color: red;
-  text-decoration: underline !important;
-}
-
 .statement img {
   width: 300px;
   object-fit: cover;
@@ -13,4 +8,8 @@
 .statement {
   padding: 0 10%;
   margin-top: 3rem;
+
+  .trix-content {
+    margin-bottom: 0;
+  }
 }

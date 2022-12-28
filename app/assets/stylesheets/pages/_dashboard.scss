@@ -94,6 +94,12 @@ trix-editor {
   width: 60%;
 }
 
+#link-red {
+  background: transparent;
+  color: #880707 !important;
+  text-decoration: underline !important;
+}
+
 @media screen and (max-width: 1200px) {
   .container-60 {
       width: 100%;
