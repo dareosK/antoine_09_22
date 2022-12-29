@@ -18,7 +18,7 @@
     </div>
 
     <% if @writing.cover.attached? %>
-      <%= cl_image_tag @writing.cover.key %>
+      <%= cl_image_tag @writing.cover.key, alt: "cover image for Antoine Champenois' text by the title #{@writing.title}" %>
     <% else %>
       <img src="https://source.unsplash.com/random" alt="">
     <% end %>

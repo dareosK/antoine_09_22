@@ -33,7 +33,7 @@
     </div>
 
       <% if @project.cover.attached? %>
-        <%= cl_image_tag(@project.cover.key) %>
+        <%= cl_image_tag(@project.cover.key, alt: "cover image for Antoine Champenois' project by the title #{@project.title}") %>
       <% else %>
         <img src="https://source.unsplash.com/random" alt="">
       <% end %>
@@ -50,7 +50,7 @@
 
   <% if  @project.photos.attached? %>
     <% @project.photos.each do |photo| %>
-      <%= cl_image_tag photo.key, class: "grid-item"%>
+      <%= cl_image_tag photo.key, class: "grid-item", alt: "gallery image of Antoine Champenois' project by the title #{@project.title}" %>
     <% end %>
     </div>
     <div class="article-border-bottom mt-2"></div>
