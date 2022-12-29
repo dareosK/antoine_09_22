@@ -22,6 +22,14 @@
           <%= f.input :end_date, html5: true, input_html: {  data: { controller: "flatpickr" } }   %>
         </div>
         <%= f.input :cover, as: :file, label: "cover photo" %>
+        <%# custom inputs start %>
+        <div class="mb-3">
+          <%= label_tag(:caption, "photo caption", class: "form-label required", required: :true) do %>
+            Photo Caption <abbr title="required">*</abbr>
+          <% end %>
+          <%= text_field_tag(:caption, "", class: "form-control", required: :true) %>
+        </div>
+        <%# custom inputs end %>
         <div class="btn w-100 dashboard-button">
           <%= f.submit %>
         </div>
@@ -30,12 +38,21 @@
     <div class="tab-pane fade show" id="newproject">
       <div class="container">
       <%= simple_form_for(@project, data: { controller: "preview" }) do |f| %>
-        <%= f.input :photos,
+        <%#= f.input :photos,
                 as: :file,
-                input_html: { multiple: true,
-                  class: 'd-none',
-                  data: { preview_target: "input" }
-                }, label_html: { class: 'upload-photo'}, label: '📷 Edit project gallery' %>
+                input_html: { multiple: true
+                } %>
+        <%# custom inputs start %>
+        <% f.object.photos.each do |image| %>
+          <%= image_tag(image, class: "w-50") %>
+          <div class="mb-3">
+            <%= label_tag(image.id, "photo caption", class: "form-label required", required: :true) do %>
+              Photo Caption <abbr title="required">*</abbr>
+            <% end %>
+            <%= text_field_tag(image.id, "", class: "form-control", required: :true) %>
+          </div>
+        <% end %>
+        <%# custom inputs end %>
         <div class="btn w-100 dashboard-button">
           <%= f.submit %>
         </div>
