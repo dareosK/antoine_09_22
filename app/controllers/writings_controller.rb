@@ -9,6 +9,7 @@ class WritingsController < ApplicationController
   def create
     @writing = Writing.new(writing_params)
     @writing.user = current_user
+    @writing.cover.update(filename: params[:caption])
     if @writing.save!
       redirect_to writing_path(@writing)
     else
@@ -23,6 +24,7 @@ class WritingsController < ApplicationController
   def update
     @writing = Writing.find(params[:id])
     @writing.update(writing_params)
+    @writing.cover.update(filename: params[:caption])
     if @writing.save!
       redirect_to writing_path(@writing)
     else

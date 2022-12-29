@@ -1,6 +1,7 @@
 <div class="container-main margin-from-navbar">
 
   <div class="article-top">
+    <%# flex-item 1 start %>
     <div class="article-header">
 
       <div class="header-info">
@@ -8,21 +9,24 @@
       </div>
 
       <div class="header-title">
-        <h2><%= @writing.title.upcase %></h2>
-        <% if current_user && current_user.admin? %>
-          <%= link_to  "🖋", edit_writing_path(@writing) %>
-        <% end %>
+        <h2><%= @writing.title.upcase %>
+          <% if current_user && current_user.admin? %>
+            <%= link_to  "🖋", edit_writing_path(@writing), class: "small" %>
+          <% end %>
+        </h2>
         <p style="color: grey;"><%= @writing.tagline %></p>
       </div>
-
     </div>
+    <%# flex-item 1 end %>
 
+    <%# flex-item 2 start %>
     <% if @writing.cover.attached? %>
       <%= cl_image_tag @writing.cover.key, alt: "cover image for Antoine Champenois' text by the title #{@writing.title}" %>
+
     <% else %>
       <img src="https://source.unsplash.com/random" alt="">
     <% end %>
-
+    <%# flex-item 2 end %>
   </div>
 
   <div class="container-60">

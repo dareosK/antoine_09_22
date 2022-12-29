@@ -22,6 +22,14 @@
           <%= f.input :end_date, html5: true, input_html: {  data: { controller: "flatpickr" } }   %>
         </div>
         <%= f.input :cover, as: :file, label: "cover photo" %>
+        <%# custom inputs start %>
+        <div class="mb-3">
+          <%= label_tag(:caption, "photo caption", class: "form-label required", required: :true) do %>
+            Photo Caption <abbr title="required">*</abbr>
+          <% end %>
+          <%= text_field_tag(:caption, "", class: "form-control", required: :true) %>
+        </div>
+  <%# custom inputs end %>
         <div class="btn w-100 dashboard-button">
           <%= f.submit %>
         </div>
@@ -32,10 +40,8 @@
       <%= simple_form_for(@project, data: { controller: "preview" }) do |f| %>
         <%= f.input :photos,
                 as: :file,
-                input_html: { multiple: true,
-                  class: 'd-none',
-                  data: { preview_target: "input" }
-                }, label_html: { class: 'upload-photo'}, label: '📷 Edit project gallery' %>
+                input_html: { multiple: true
+                } %>
         <div class="btn w-100 dashboard-button">
           <%= f.submit %>
         </div>

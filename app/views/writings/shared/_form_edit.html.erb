@@ -6,6 +6,14 @@
   <%= f.rich_text_area :rich_body %>
   <%= f.input :date, html5: true, input_html: { data: { controller: "flatpickr" } }  %>
   <%= f.input :cover, as: :file, label: "cover photo" %>
+  <%# custom inputs start %>
+  <div class="mb-3">
+    <%= label_tag(:caption, "photo caption", class: "form-label required", required: :true) do %>
+      Photo Caption <abbr title="required">*</abbr>
+    <% end %>
+    <%= text_field_tag(:caption, "", class: "form-control", required: :true) %>
+  </div>
+  <%# custom inputs end %>
   <div class="btn w-100 dashboard-button">
     <%= f.submit %>
   </div>

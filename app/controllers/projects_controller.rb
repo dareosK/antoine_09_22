@@ -8,9 +8,10 @@ class ProjectsController < ApplicationController
   def create
     @project = Project.new(project_params)
     @project.user_id = current_user.id
+    @project.cover.update(filename: params[:caption])
     if @project.save!
-    # no need for app/views/projects/create.html.erb
-    redirect_to project_path(@project)
+      # no need for app/views/projects/create.html.erb
+      redirect_to project_path(@project)
     else
       render "pages/dashboard", status: :unprocessable_entity
     end
@@ -23,6 +24,7 @@ class ProjectsController < ApplicationController
   def update
     @project = Project.find(params[:id])
     @project.update(project_params)
+    @project.cover.update(filename: params[:caption])
 
     # no need for app/views/projects/update.html.erb
     redirect_to project_path(@project)
