@@ -4,8 +4,16 @@
     <div class="article-header">
 
       <div class="header-info-project">
-        <p class="header-author"><%= @project.institution_name.upcase %></p>
-        <p class="header-date"><%= @project.date.strftime("%-d %B %y") %> <span class="text-dark">to</span> <%= @project.end_date.strftime("%-d %B %y") %></p>
+
+        <% if @project.institution_name %>
+          <p class="header-author" style="font-size: smaller;"><%= @project.institution_name.upcase %></p>
+        <% end %>
+
+        <p class="header-date"><%= @project.date.strftime("%-d %B %y") %>
+          <% if @project.end_date %>
+            <span class="text-dark">to</span> <%= @project.end_date.strftime("%-d %B %y") %>
+          <% end %>
+        </p>
       </div>
 
       <div class="header-title">
@@ -17,7 +25,7 @@
         </div>
 
         <% if !@project.artists.empty? %>
-          <p style="color: grey;">with <%= @project.artists %></p>
+          <p style="color: grey; font-size: smaller;">with <%= @project.artists %></p>
         <% end %>
 
       </div>
@@ -49,13 +57,3 @@
   <% end %>
 
 </div>
-
-
-<%# <script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script>
-<script>
-  var elem = document.querySelector('.masonry-grid');
-  var msnry = new Masonry( elem, {
-    // options
-    itemSelector: '.grid-item'
-  });
-</script> %>

@@ -13,5 +13,28 @@
   a {
     text-decoration: none;
     color: black;
+    font-weight: bolder;
+  }
+}
+
+#nav-logo {
+  font-family: 'Noto Sans Mono', monospace;
+  font-weight: 800 !important;
+  color: black;
+  font-weight: bolder;
+}
+
+
+@media screen and (min-width: 700px) {
+  #nav-logo {
+    font-size: 50px;
+    font-size: 4vw;
+  }
+
+  .nav_links {
+
+    a {
+      font-size: 1.5vw;
+    }
   }
 }
