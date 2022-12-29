@@ -44,6 +44,7 @@ class ProjectsController < ApplicationController
 
   def project_params
     params.require(:project).permit(:title,
+                                    :tagline,
                                     :artists,
                                     :institution_name,
                                     :project_type,
