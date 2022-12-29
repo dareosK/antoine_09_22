@@ -23,6 +23,7 @@ class ProjectsController < ApplicationController
 
   def update
     @project = Project.find(params[:id])
+    raise
     @project.update(project_params)
     @project.cover.update(filename: params[:caption])
 
