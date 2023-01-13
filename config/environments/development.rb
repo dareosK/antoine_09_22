@@ -12,6 +12,9 @@ Rails.application.configure do
   # Do not eager load code on boot.
   config.eager_load = false
 
+  # whitelist for localtunnel
+  config.hosts << /\A[a-z\d-]+\.loca\.lt\z/
+
   # Show full error reports.
   config.consider_all_requests_local = true
 

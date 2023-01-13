@@ -1,8 +1,14 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <%# <title>Antoine Champenois - Curator, Art Critic</title> %>
+    <%# PWA %>
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="mobile-web-app-capable" content="yes">
+    <link rel="manifest" href="<%= asset_path 'manifest.json' %>">
+    <%= render 'shared/ios_pwa_links' %>
+    <%# responsive design %>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <%# Favicon %>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🦠</text></svg>">
     <%# Fonts %>
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -30,6 +36,7 @@
     <meta name="twitter:creator" content="<%= DEFAULT_META["twitter_account"] %>">
     <meta name="twitter:image:src" content="<%= meta_image %>">
 
+    <%# SCSS and JS entry point %>
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
   </head>
