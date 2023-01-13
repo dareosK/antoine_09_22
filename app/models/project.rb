@@ -12,4 +12,8 @@ class Project < ApplicationRecord
 
   # action text
   has_rich_text :rich_body
+
+  # friendly URLS
+  extend FriendlyId
+  friendly_id :title, use: :slugged
 end

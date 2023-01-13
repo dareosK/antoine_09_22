@@ -2,7 +2,7 @@ class WritingsController < ApplicationController
     skip_before_action :authenticate_user!, except: [:create, :edit, :update, :destroy]
 
   def show
-    @writing = Writing.find(params[:id])
+    @writing = Writing.friendly.find(params[:id])
     @quotes = User.find_by(admin: true).quotes
   end
 
