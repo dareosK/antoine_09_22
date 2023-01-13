@@ -48,6 +48,9 @@ gem "bootsnap", require: false
 # Use Sass to process CSS
 gem "sassc-rails"
 
+# friendly urls
+gem 'friendly_id', '~> 5.4.0'
+
 # Image upload to cloudinary
 gem "cloudinary"
 
