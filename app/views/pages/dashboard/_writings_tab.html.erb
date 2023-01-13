@@ -17,7 +17,7 @@
             </div>
             <span class="work-date"><%= writing.date.strftime("%d of %B, %Y") + " | " %></span>
             <span class="work-text">text</span>
-            <p style="color: black !important;"><%= writing.tagline%></p>
+            <p style="color: black !important;"><%= writing.tagline.truncate(160, ommission: "...") %></p>
           </div>
         </div>
       <% end  %>

@@ -9,7 +9,7 @@
               <h2><%= work.title %></h2>
               <span class="work-date"><%= work.date.strftime("%d of %B, %Y") + " | " %></span>
               <span class="work-text">text</span>
-              <p><%= work.tagline.truncate(100, ommission: "... (read more)")  %></p>
+              <p><%= work.tagline.truncate(100, ommission: "...")  %></p>
             </div>
           <% end %>
         <% elsif work.class == Project %>
@@ -19,7 +19,7 @@
               <h2><%= work.title %></h2>
               <span class="work-date"><%= work.date.strftime("%d of %B, %Y") + " | " %></span>
               <span class="work-text"><%= work.project_type %></span>
-              <p><%= work.tagline.truncate(100, ommission: "... (read more)")  %></p>
+              <p><%= work.tagline.truncate(100, ommission: "...")  %></p>
             </div>
           <% end %>
         <% end %>
