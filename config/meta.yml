@@ -1,0 +1,6 @@
+meta_name: "Project"
+meta_author: "Antoine Champenois"
+meta_title: "Antoine Champenois - Curator, Art Critic"
+meta_description: "Tagline"
+meta_image: "cover.jpg" # should exist in `app/assets/images/`
+twitter_account: ""   # required for Twitter Cards
