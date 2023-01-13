@@ -1,3 +1,8 @@
+<% content_for :meta_title, "#{@project.title} is on #{DEFAULT_META["meta_product_name"]}" %>
+<% content_for :meta_description, "#{@project.tagline} by Antoine Champenois" %>
+<% content_for :meta_author, "Antoine Champenois" %>
+<% content_for :meta_image, cl_image_path(@project.cover.key) if @project.cover.attached? %>
+
 <div class="container-main margin-from-navbar">
 
   <div class="article-top">
