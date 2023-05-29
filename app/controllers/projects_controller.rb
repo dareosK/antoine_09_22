@@ -1,8 +1,8 @@
 class ProjectsController < ApplicationController
   skip_before_action :authenticate_user!, except: [:create, :edit, :update, :destroy]
+  before_action :find_project, only: [:show, :edit, :update, :destroy]
 
   def show
-    @project = Project.friendly.find(params[:id])
   end
 
   def create
@@ -17,11 +17,9 @@ class ProjectsController < ApplicationController
   end
 
   def edit
-    @project = Project.find(params[:id])
   end
 
   def update
-    @project = Project.find(params[:id])
     @project.update(project_params)
 
     # no need for app/views/projects/update.html.erb
@@ -29,7 +27,6 @@ class ProjectsController < ApplicationController
   end
 
   def destroy
-    @project = Project.find(params[:id])
     @project.destroy
 
     # no need for app/views/projects/destroy.html.erb
@@ -38,9 +35,9 @@ class ProjectsController < ApplicationController
 
   private
 
-  # def find_project
-  #   @project = Project.find(params[:id])
-  # end
+  def find_project
+    @project = Project.friendly.find(params[:id])
+  end
 
   def project_params
     params.require(:project).permit(:title,
